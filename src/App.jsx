@@ -40,6 +40,7 @@ const App = () => {
               selectedTrack={selectedTrack}
               tracks={tracks}
             />
+
             <MusicPlayer
               selectedTrack={selectedTrack}
               isPlaying={isPlaying}
