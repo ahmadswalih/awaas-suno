@@ -2,8 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaPause, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import ReactPlayer from "react-player";
 
-const MusicPlayer = ({ selectedTrack, isPlaying, setIsPlaying, tracks }) => {
-  const [currentTrack, setCurrentTrack] = useState(selectedTrack || 0);
+const MusicPlayer = ({
+  selectedTrack,
+  isPlaying,
+  setIsPlaying,
+  setSelectedTrack,
+  tracks,
+}) => {
+  const [currentTrack, setCurrentTrack] = useState(null);
 
   const [played, setPlayed] = useState(0);
   const [volume, setVolume] = useState(0.8);
@@ -24,14 +30,16 @@ const MusicPlayer = ({ selectedTrack, isPlaying, setIsPlaying, tracks }) => {
   };
 
   const handleNextTrack = () => {
-    setCurrentTrack((prevTrack) => (prevTrack + 1) % tracks.length);
+    const nextTrackIndex = (currentTrack + 1) % tracks.length;
+    setCurrentTrack(nextTrackIndex);
+    setSelectedTrack(tracks[nextTrackIndex]);
     setIsPlaying(true);
   };
 
   const handlePrevTrack = () => {
-    setCurrentTrack(
-      (prevTrack) => (prevTrack - 1 + tracks.length) % tracks.length
-    );
+    const prevTrackIndex = (currentTrack - 1 + tracks.length) % tracks.length;
+    setCurrentTrack(prevTrackIndex);
+    setSelectedTrack(tracks[prevTrackIndex]);
     setIsPlaying(true);
   };
 
@@ -50,6 +58,10 @@ const MusicPlayer = ({ selectedTrack, isPlaying, setIsPlaying, tracks }) => {
     const secs = Math.floor(seconds % 60);
     return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
+
+  if (currentTrack === null) {
+    return null;
+  }
 
   return (
     <div>

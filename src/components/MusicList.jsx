@@ -39,22 +39,26 @@ const MusicList = ({
               <th className="p-4">Title</th>
               <th className="p-4  ">Singers</th>
               <th className="p-4 hidden md:table-cell  ">Language</th>
-              <th className="p-4 hidden md:table-cell">Duration</th>
+              <th className="p-4 ">Duration</th>
             </tr>
           </thead>
           <tbody>
             {tracks.map((track) => (
               <tr
                 key={track.id}
-                className={`border-b border-gray-700 hover:bg-gray-700 hover:cursor-pointer" 
-                  `}
+                className={`border-b text-sm border-gray-700 hover:bg-gray-700 hover:cursor-pointer" 
+                ${
+                  selectedTrack && selectedTrack.id === track.id
+                    ? "bg-gray-900"
+                    : ""
+                } `}
                 onClick={() => onTrackSelect(track)}
               >
                 <td className="p-4 hidden md:table-cell ">{track.id}</td>
                 <td className="p-4 hover:underline">{track.title}</td>
                 <td className="p-4 hover:underline ">{track.singers}</td>
                 <td className="p-4 hidden md:table-cell ">{track.language}</td>
-                <td className="p-4 hidden md:table-cell ">{track.duration}</td>
+                <td className="p-4 ">{track.duration}</td>
               </tr>
             ))}
           </tbody>

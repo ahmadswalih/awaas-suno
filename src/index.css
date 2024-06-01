@@ -20,3 +20,16 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+@font-face {
+  font-family: "Hagrid";
+  src: url("/fonts/hagrid/Hagrid-Regular-trial.ttf") format("truetype");
+  font-weight: regular;
+  font-style: regular;
+}
+@font-face {
+  font-family: "Hagrid-Bold";
+  src: url("/fonts/hagrid/Hagrid-Text-Extrabold-Italic-trial.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
