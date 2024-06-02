@@ -12,7 +12,7 @@ const MusicPlayer = ({
   const [currentTrack, setCurrentTrack] = useState(null);
 
   const [played, setPlayed] = useState(0);
-  const [volume, setVolume] = useState(0.8);
+  const [volume, setVolume] = useState(1);
   const playerRef = useRef(null);
 
   useEffect(() => {
